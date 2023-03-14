@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab01-Instructions.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="lab-01---recommended-practices-and-continuations">Lab 01 - Recommended Practices and Continuations</h1>
+<h2 id="objectives">Objectives</h2>
+<p>This lab shows some asynchronous programming concepts, including converting methods to async, letting async flow through the application, and using .ConfigureAwait().</p>
+<h2 id="application-overview">Application Overview</h2>
+<p>The &quot;Starter&quot; folder contains the code files for this lab.</p>
+<p><strong>Visual Studio 2022:</strong> Open the &quot;DataProcessor.sln&quot; solution.<br>
+<strong>Visual Studio Code:</strong> Open the &quot;Starter&quot; folder in VS Code.</p>
+<p><em>Note: The lab also contains a &quot;Completed&quot; folder with the finished solution. If you get stuck along the way or have issues with debugging, take a look at the code in the &quot;Completed&quot; folder for guidance.</em></p>
+<p>This solution is a console application that processes data from a text file. The &quot;DataLoader&quot; class creates a list of strings from the contents of the file (&quot;data.txt&quot;). These strings are passed to the &quot;DataParser&quot; class. The DataParser is responsible for parsing the strings into Person objects (which are then displayed to the console). Errors are logged to a file using the &quot;FileLogger&quot; class.</p>
+<p>Run the application by pressing F5 (in either Visual Studio Code or Visual Studio 2022). This will build the application and give us some output that we can ignore for now.</p>
+<blockquote>
+<p>Both .NET 6.0 and .NET 7.0 versions of the code are provided. The instructions and code are the same. The only difference in the instructions is that if you come across &quot;net70&quot; or &quot;net60&quot;, use the value appropriate for your environment.</p>
+</blockquote>
+<p>In File Explorer, open the output folder: <em>[working_directory]/DataProcessor/bin/Debug/net70/</em>. Open the &quot;data.txt&quot; file. This contains a number of comma-separated value (CSV) records along with some invalid records. Run the application by double-clicking &quot;DataProcessor.exe&quot;. The output will be as follows:</p>
+<pre class="hljs"><code><div>Successfully processed 9 records
+John Koenig
+Dylan Hunt
+Turanga Leela
+John Crichton
+Dave Lister
+Laura Roslin
+John Sheridan
+Dante Montana
+Isaac Gampu
+</div></code></pre>
+<p>Now open the &quot;log.txt&quot; file in the same folder. It contains the errors and bad records.</p>
+<pre class="hljs"><code><div>==================
+2023-03-11T12:38:33: Wrong number of fields in record - INVALID RECORD FORMAT
+2023-03-11T12:38:33: Cannot parse Start Date field - 20,Check,Date,0/2//,9,{1} {0}
+2023-03-11T12:38:33: Wrong number of fields in record - BAD RECORD
+2023-03-11T12:38:33: Cannot parse Rating field - 21,Check,Rating,2014/05/03,a,
+</div></code></pre>
+<h2 id="lab-goals">Lab Goals</h2>
+<p>Our goal is to change the logging function to an asynchronous operation. Our logger can then access files asynchronously. In addition, we will allow the async operations to propagate through the application.</p>
+<h2 id="current-classes">Current Classes</h2>
+<p><strong>DataProcessor.Library/ILogger</strong><br>
+This is the interface for logging:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">ILogger</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>;
+}
+</div></code></pre>
+<p><strong>DataProcessor.Library/FileLogger</strong><br>
+Implements the ILogger interface to log messages to a file. Here is the &quot;LogMessage&quot; implementation:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+{
+    <span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> writer = <span class="hljs-keyword">new</span> StreamWriter(logPath, <span class="hljs-literal">true</span>);
+    writer.WriteLine(
+        <span class="hljs-string">$"<span class="hljs-subst">{DateTime.Now:s}</span>: <span class="hljs-subst">{message}</span> - <span class="hljs-subst">{data}</span>"</span>);
+}
+</div></code></pre>
+<p><strong>DataProcessor.Library/DataParser</strong><br>
+Parses the data file and uses the &quot;ILogger&quot; interface to log any errors. The logger is passed in through the constructor.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DataParser</span>(<span class="hljs-params">ILogger logger</span>)</span>
+{
+    <span class="hljs-keyword">this</span>.logger = logger ?? <span class="hljs-keyword">new</span> NullLogger();
+}
+</div></code></pre>
+<p>Note: if a logger is not passed in, then a &quot;NullLogger&quot; is used. This is a logger that does nothing.</p>
+<p>The logger is used in the &quot;ParseData&quot; method of the &quot;DataParser&quot; class. We'll look at this method a bit more closely when making changes.</p>
+<p><strong>DataProcessor/Program</strong><br>
+The program class has the entry point for the console application. Here is the &quot;ProcessData&quot; method:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> IReadOnlyCollection&lt;Person&gt; <span class="hljs-title">ProcessData</span>(<span class="hljs-params"></span>)</span>
+{
+    <span class="hljs-keyword">var</span> loader = <span class="hljs-keyword">new</span> DataLoader();
+    IReadOnlyCollection&lt;<span class="hljs-keyword">string</span>&gt; data = loader.LoadData();
+
+    <span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">new</span> FileLogger();
+    <span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span> DataParser(logger);
+    <span class="hljs-keyword">var</span> records = parser.ParseData(data);
+    <span class="hljs-keyword">return</span> records;
+}
+</div></code></pre>
+<p>This method loads the data from the text file, then creates the logger and data parser classes. It then calls &quot;ParseData&quot; and returns the records that come back.</p>
+<h2 id="hints">Hints</h2>
+<p>In ILogger.cs:</p>
+<ul>
+<li>Change the &quot;LogMessage&quot; interface to return &quot;Task&quot; instead of &quot;void&quot;.</li>
+</ul>
+<p>In FileLogger.cs:</p>
+<ul>
+<li>Change &quot;LogMessage&quot; to an asynchronous method to match the interface.</li>
+<li>The &quot;StreamWriter&quot; class has an asynchronous &quot;WriteLineAsync&quot; method that can be used.</li>
+</ul>
+<p>In NullLogger.cs:</p>
+<ul>
+<li>Update the class to satisfy the updated &quot;ILogger&quot; interface.</li>
+<li>Do not return &quot;null&quot; from the method. There is a static property on Task that can be used instead.</li>
+</ul>
+<p>In DataParser.cs:</p>
+<ul>
+<li>Await the &quot;logger.LogMessage&quot; calls in the &quot;ParseData&quot; method.</li>
+<li>Let the async bubble up through this method.</li>
+</ul>
+<p>In Program.cs:</p>
+<ul>
+<li>Update the &quot;ProcessData&quot; method as needed. (That's all of the hints you get for this one).</li>
+</ul>
+<p>Additional Hints:</p>
+<ul>
+<li>Since we're dealing with library code, think about where to use &quot;.ConfigureAwait(false)&quot; in the code.</li>
+</ul>
+<p>If you want more assistance, step-by-step instructions are included below. Otherwise, if you'd like to challenge yourself, <strong>STOP READING NOW</strong></p>
+<h2 id="updating-to-asynchronous-methods-step-by-step">Updating to Asynchronous Methods: Step-By-Step</h2>
+<ol>
+<li>Update the ILogger interface to use an asynchronous method.</li>
+</ol>
+<p>In the &quot;ILogger.cs&quot; file, change the LogMessage method so that it returns &quot;Task&quot; instead of &quot;void&quot;.</p>
+<p>Note: You do not need to worry about adding a &quot;using&quot; statement for &quot;System.Threading.Tasks&quot;; this is automatically included as part of the &quot;global usings&quot; configured at the project level. For more information, you can look up &quot;.NET global using&quot;.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">namespace</span> <span class="hljs-title">DataProcessor.Library</span>;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">ILogger</span>
+{
+    <span class="hljs-function">Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>;
+}
+</div></code></pre>
+<ol start="2">
+<li>Update the FileLogger to match the interface.</li>
+</ol>
+<p>In the &quot;FileLogger.cs&quot; file, change the return type of the LogMessage method from &quot;void&quot; to &quot;Task&quot;.</p>
+<p>Change the body of the method to use &quot;WriteLineAsync&quot; instead of &quot;WriteLine&quot;.</p>
+<p>Since &quot;WriteLineAsync&quot; returns a Task, it is really tempting to directly return it. Here's what that looks like:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+{
+    <span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> writer = <span class="hljs-keyword">new</span> StreamWriter(logPath, <span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">return</span> writer.WriteLineAsync(
+        <span class="hljs-string">$"<span class="hljs-subst">{DateTime.Now:s}</span>: <span class="hljs-subst">{message}</span> - <span class="hljs-subst">{data}</span>"</span>);
+}
+</div></code></pre>
+<blockquote>
+<p><strong>Caution</strong><br>
+Even though this compiles, it may not work as expected. This is because of the &quot;using&quot; statement on the StreamWriter class. By using this code, the StreamWriter may get disposed before the &quot;WriteLineAsync&quot; method is called. This results in a runtime exception. The exact behavior depends on the specific version of the compiler.</p>
+</blockquote>
+<p>Rather than returning the task directly, await it. (Don't forget to add the &quot;async&quot; modifier to the method.)</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+{
+    <span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> writer = <span class="hljs-keyword">new</span> StreamWriter(logPath, <span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">await</span> writer.WriteLineAsync(
+        <span class="hljs-string">$"<span class="hljs-subst">{DateTime.Now:s}</span>: <span class="hljs-subst">{message}</span> - <span class="hljs-subst">{data}</span>"</span>);
+}
+</div></code></pre>
+<ol start="3">
+<li>Update the NullLogger to match the interface.</li>
+</ol>
+<p>Change the return type of the LogMessage method from &quot;void&quot; to &quot;Task&quot;. (You'll need to add the relevant using statement. Since we've done this several times, I'll stop reminding you about it.)</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NullLogger</span> : <span class="hljs-title">ILogger</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+    {
+        <span class="hljs-comment">// AVOID RETURNING NULL</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+}
+</div></code></pre>
+<blockquote>
+<p><strong>Caution</strong><br>
+It's tempting to return &quot;null&quot; from this method, particularly since the logger intentionally does nothing. But this is a bad practice can cause issues for callers.</p>
+</blockquote>
+<p>We could create a new Task with a TaskFactory, but a better solution is to use the static &quot;CompletedTask&quot; property on the Task type.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NullLogger</span> : <span class="hljs-title">ILogger</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+    {
+        <span class="hljs-comment">// does nothing</span>
+        <span class="hljs-keyword">return</span> Task.CompletedTask;
+    }
+}
+</div></code></pre>
+<p>This lets the calling code know that there is a completed task (and one that completed successfully). This fits in well with callers.</p>
+<p>Now that the loggers are all updated, it's time to move on to where the loggers are used.</p>
+<ol start="4">
+<li>Update the DataParser to await the async method of the logger.</li>
+</ol>
+<p>In the &quot;DataParser.cs&quot; file, locate the ParseData method. This has a number of calls to &quot;logger.LogMessage&quot;.</p>
+<p>If we leave the calls the way they are, the code will still work. The &quot;LogMessage&quot; methods will be called on the logger, but we won't know if they complete successfully. By awaiting the methods, we know when they are finished, and we can also deal with exceptions if there are problems.</p>
+<p>Here's one of the calls (updated with await):</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">if</span> (fields.Length != <span class="hljs-number">6</span>)
+    {
+        <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Wrong number of fields in record"</span>, record);
+        <span class="hljs-keyword">continue</span>;
+    }
+</div></code></pre>
+<p>Since we are using &quot;await&quot;, we need to mark the method as &quot;async&quot; and change the return type to Task:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task&lt;IReadOnlyCollection&lt;Person&gt;&gt; ParseData(IEnumerable&lt;<span class="hljs-keyword">string</span>&gt; data)
+</div></code></pre>
+<p>With the return type change, we are letting the asynchronous code bubble up through our application. This is exactly what we want.</p>
+<p>Here is the completed method with all of the awaits filled in:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task&lt;IReadOnlyCollection&lt;Person&gt;&gt; ParseData(IEnumerable&lt;<span class="hljs-keyword">string</span>&gt; data)
+{
+    <span class="hljs-keyword">var</span> processedRecords = <span class="hljs-keyword">new</span> List&lt;Person&gt;();
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> record <span class="hljs-keyword">in</span> data)
+    {
+        <span class="hljs-keyword">var</span> fields = record.Split(<span class="hljs-string">','</span>);
+        <span class="hljs-keyword">if</span> (fields.Length != <span class="hljs-number">6</span>)
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Wrong number of fields in record"</span>, record);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">int</span> id;
+        <span class="hljs-keyword">if</span> (!Int32.TryParse(fields[<span class="hljs-number">0</span>], <span class="hljs-keyword">out</span> id))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Id field"</span>, record);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        DateTime startDate;
+        <span class="hljs-keyword">if</span> (!DateTime.TryParse(fields[<span class="hljs-number">3</span>], <span class="hljs-keyword">out</span> startDate))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Start Date field"</span>, record);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">int</span> rating;
+        <span class="hljs-keyword">if</span> (!Int32.TryParse(fields[<span class="hljs-number">4</span>], <span class="hljs-keyword">out</span> rating))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Rating field"</span>, record);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person(id, fields[<span class="hljs-number">1</span>], fields[<span class="hljs-number">2</span>], 
+            startDate, rating, fields[<span class="hljs-number">5</span>]);
+
+        <span class="hljs-comment">// Successfully parsed record</span>
+        processedRecords.Add(person);
+    }
+    <span class="hljs-keyword">return</span> processedRecords;
+}
+</div></code></pre>
+<ol start="5">
+<li>Update the Program, starting with the ProcessData method.</li>
+</ol>
+<p>In the &quot;Program.cs&quot; file, update the ProcessData method by awaiting the &quot;ParseData&quot; method that we just updated. (Don't forget about changing the return type.)</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> Task&lt;IReadOnlyCollection&lt;Person&gt;&gt; ProcessData()
+{
+    <span class="hljs-keyword">var</span> loader = <span class="hljs-keyword">new</span> DataLoader();
+    IReadOnlyCollection&lt;<span class="hljs-keyword">string</span>&gt; data = loader.LoadData();
+
+    <span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">new</span> FileLogger();
+    <span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span> DataParser(logger);
+    <span class="hljs-keyword">var</span> records = <span class="hljs-keyword">await</span> parser.ParseData(data);
+    <span class="hljs-keyword">return</span> records;
+}
+</div></code></pre>
+<ol start="6">
+<li>Update the Main method.</li>
+</ol>
+<p>Add an await to the call to &quot;ProcessData&quot;. You'll need to change the return type on &quot;Main&quot;, and that's fine (async Main methods were added to C# a few language updates ago).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)</span>
+{
+    <span class="hljs-keyword">var</span> records = <span class="hljs-keyword">await</span> ProcessData();
+
+    Console.WriteLine(<span class="hljs-string">$"Successfully processed <span class="hljs-subst">{records.Count()}</span> records"</span>);
+    <span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">var</span> person <span class="hljs-keyword">in</span> records)
+    {
+        Console.WriteLine(person);
+    }
+    Console.WriteLine(<span class="hljs-string">"Press Enter to continue..."</span>);
+    Console.ReadLine();
+}
+</div></code></pre>
+<ol start="7">
+<li>Build and run the application.</li>
+</ol>
+<p>Use F5 to build and run the application. The output should be the same as before:</p>
+<pre class="hljs"><code><div>Successfully processed 9 records
+John Koenig
+Dylan Hunt
+Turanga Leela
+John Crichton
+Dave Lister
+Laura Roslin
+John Sheridan
+Dante Montana
+Isaac Gampu
+</div></code></pre>
+<ol start="8">
+<li>Check to make sure the logger is still logging to the &quot;log.txt&quot; file.</li>
+</ol>
+<p>In File Explorer, open the output folder: <em>[working_directory]/DataProcessor/bin/Debug/net7.0/</em>.</p>
+<p>Open the &quot;log.txt&quot; file in the same folder. It contains the errors and bad records. The logger appends to the file, so you should see recent time stamps at the end of the file.</p>
+<pre class="hljs"><code><div>==================
+2023-03-11T12:38:33: Wrong number of fields in record - INVALID RECORD FORMAT
+2023-03-11T12:38:33: Cannot parse Start Date field - 20,Check,Date,0/2//,9,{1} {0}
+2023-03-11T12:38:33: Wrong number of fields in record - BAD RECORD
+2023-03-11T12:38:33: Cannot parse Rating field - 21,Check,Rating,2014/05/03,a,
+==================
+2023-03-11T12:43:14: Wrong number of fields in record - INVALID RECORD FORMAT
+2023-03-11T12:43:14: Cannot parse Start Date field - 20,Check,Date,0/2//,9,{1} {0}
+2023-03-11T12:43:14: Wrong number of fields in record - BAD RECORD
+2023-03-11T12:43:14: Cannot parse Rating field - 21,Check,Rating,2014/05/03,a,
+</div></code></pre>
+<h2 id="optimizing-using-configureawait---step-by-step">Optimizing Using .ConfigureAwait() - Step-by-Step</h2>
+<p>As a reminder, when we await a task, the current context is saved. Then after the async code completes, we're returned to that context to continue running.</p>
+<p>Our code works (as we can see), but it uses unneeded resources. To optimize our code, we should add &quot;ConfigureAwait(false)&quot; wherever we are awaiting inside the library.</p>
+<p>We'll start at the bottom and work our way up.</p>
+<ol>
+<li>FileLogger class / LogMessage method</li>
+</ol>
+<p>Add &quot;.ConfigureAwait(false)&quot; to the &quot;WriteLineAsync&quot; method call.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">LogMessage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> message, <span class="hljs-keyword">string</span> data</span>)</span>
+{
+    <span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> writer = <span class="hljs-keyword">new</span> StreamWriter(logPath, <span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">await</span> writer.WriteLineAsync(
+        <span class="hljs-string">$"<span class="hljs-subst">{DateTime.Now:s}</span>: <span class="hljs-subst">{message}</span> - <span class="hljs-subst">{data}</span>"</span>)
+        .ConfigureAwait(<span class="hljs-literal">false</span>);
+}
+</div></code></pre>
+<ol start="2">
+<li>DataParser class / ParseData method</li>
+</ol>
+<p>Add &quot;.ConfigureAwait(false)&quot; to all of the &quot;LogMessage&quot; method calls.</p>
+<p><em>Note: Since the code lines can get pretty long, I often put the &quot;.ConfigureAwait(false)&quot; on the next line.</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task&lt;IReadOnlyCollection&lt;Person&gt;&gt; ParseData(IEnumerable&lt;<span class="hljs-keyword">string</span>&gt; data)
+{
+    <span class="hljs-keyword">var</span> processedRecords = <span class="hljs-keyword">new</span> List&lt;Person&gt;();
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> record <span class="hljs-keyword">in</span> data)
+    {
+        <span class="hljs-keyword">var</span> fields = record.Split(<span class="hljs-string">','</span>);
+        <span class="hljs-keyword">if</span> (fields.Length != <span class="hljs-number">6</span>)
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Wrong number of fields in record"</span>, record)
+                .ConfigureAwait(<span class="hljs-literal">false</span>);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">int</span> id;
+        <span class="hljs-keyword">if</span> (!Int32.TryParse(fields[<span class="hljs-number">0</span>], <span class="hljs-keyword">out</span> id))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Id field"</span>, record)
+                .ConfigureAwait(<span class="hljs-literal">false</span>);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        DateTime startDate;
+        <span class="hljs-keyword">if</span> (!DateTime.TryParse(fields[<span class="hljs-number">3</span>], <span class="hljs-keyword">out</span> startDate))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Start Date field"</span>, record)
+                .ConfigureAwait(<span class="hljs-literal">false</span>);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">int</span> rating;
+        <span class="hljs-keyword">if</span> (!Int32.TryParse(fields[<span class="hljs-number">4</span>], <span class="hljs-keyword">out</span> rating))
+        {
+            <span class="hljs-keyword">await</span> logger.LogMessage(<span class="hljs-string">"Cannot parse Rating field"</span>, record)
+                .ConfigureAwait(<span class="hljs-literal">false</span>);
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        <span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person(id, fields[<span class="hljs-number">1</span>], fields[<span class="hljs-number">2</span>], 
+            startDate, rating, fields[<span class="hljs-number">5</span>]);
+
+        <span class="hljs-comment">// Successfully parsed record</span>
+        processedRecords.Add(person);
+    }
+    <span class="hljs-keyword">return</span> processedRecords;
+}
+</div></code></pre>
+<ol start="3">
+<li>Program class / ProcessData method</li>
+</ol>
+<p>Since we are not worried about a specific context for our console application, we can add &quot;.ConfigureAwait(false)&quot; there as well.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> Task&lt;IReadOnlyCollection&lt;Person&gt;&gt; ProcessData()
+{
+    <span class="hljs-keyword">var</span> loader = <span class="hljs-keyword">new</span> DataLoader();
+    IReadOnlyCollection&lt;<span class="hljs-keyword">string</span>&gt; data = loader.LoadData();
+
+    <span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">new</span> FileLogger();
+    <span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span> DataParser(logger);
+    <span class="hljs-keyword">var</span> records = <span class="hljs-keyword">await</span> parser.ParseData(data).ConfigureAwait(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">return</span> records;
+}
+</div></code></pre>
+<ol start="4">
+<li>Program class / Main method</li>
+</ol>
+<p>And the last stop is the Main method.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)</span>
+{
+    <span class="hljs-keyword">var</span> records = <span class="hljs-keyword">await</span> ProcessData().ConfigureAwait(<span class="hljs-literal">false</span>);
+
+    Console.WriteLine(<span class="hljs-string">$"Successfully processed <span class="hljs-subst">{records.Count()}</span> records"</span>);
+    <span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">var</span> person <span class="hljs-keyword">in</span> records)
+    {
+        Console.WriteLine(person);
+    }
+    Console.WriteLine(<span class="hljs-string">"Press Enter to continue..."</span>);
+    Console.ReadLine();
+}
+</div></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>So this has shown us how to add asynchronous methods to our application, allow them to propagate through, and also use &quot;.ConfigureAwait(false)&quot; to optimize our code.</p>
+<hr>
+<p><em>End of Lab 01 - Recommended Practices and Continuations</em></p>
+<hr>
+
+</body>
+</html>
