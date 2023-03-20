@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Threading.Channels;
 using TaskAwait.Library;
 using TaskAwait.Shared;
@@ -124,6 +124,6 @@ class Program
         output.AppendLine($"{person.Id}: {person}");
         output.AppendLine($"{person.StartDate:D}");
         output.Append($"Rating: {new string('*', person.Rating)}");
-        Console.Write(output.ToString());
+        Console.WriteLine(output.ToString());
     }
 }
