@@ -124,6 +124,6 @@ class Program
         output.AppendLine($"{person.Id}: {person}");
         output.AppendLine($"{person.StartDate:D}");
         output.Append($"Rating: {new string('*', person.Rating)}");
-        Console.WriteLine(output.ToString());
+        Console.Write(output.ToString());
     }
 }
