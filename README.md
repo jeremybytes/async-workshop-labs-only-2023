@@ -9,6 +9,8 @@ For a full description of the workshop, please refer to the original event link.
 [https://github.com/jeremybytes/vslive2023-lasvegas](https://github.com/jeremybytes/vslive2023-lasvegas)  
 * Visual Studio LIVE! San Diego (August 2023)  
 [https://github.com/jeremybytes/vslive2023-sandiego](https://github.com/jeremybytes/vslive2023-sandiego)  
+* Visual Studio LIVE! Orlando (November 2023)  
+[https://github.com/jeremybytes/vslive2023-orlando](https://github.com/jeremybytes/vslive2023-orlando)
 
 ## Pre-Requisites:  
 
