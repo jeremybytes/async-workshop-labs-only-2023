@@ -56,13 +56,19 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * Open a web browser and navigate to "https://localhost:5001".
 
-> Note: You may get a runtime error if you do not have a developer certificate on your machine (for HTTPS). To create a developer certificate, type the following:
+> Note: You may get a runtime error if you do not have a developer certificate on your machine (for HTTPS), or if the certificate is expired. First, remove an existing certificate (if expired):
 > 
+> ```
+> dotnet dev-certs https --clean
+> ```
+> 
+> Then use the following to create a certificate:  
+>
 > ```
 > dotnet dev-certs https
 > ```
 > 
-> Then to trust the certificate, type the following:  
+> Finally, trust the certificate with the following:  
 > 
 > ```
 > dotnet dev-certs https --trust
@@ -86,7 +92,7 @@ There are two "slow" areas of this application:
 
 Because we do not want to block the incoming request threads in our web application, we will make both of these methods asynchronous.
 
-The "MazeGenerator" class creates the grid and uses the maze algorithm to create the maze. The "Generate" method is one that we want to make asynchronous.
+The "MazeGenerator" class creates the grid and uses the maze algorithm to create the maze. The "GenerateMaze" method is one that we want to make asynchronous.
 
 The "Grid" class creates the output image. The "ToPng" method is one that we want to make asynchronous.
 
